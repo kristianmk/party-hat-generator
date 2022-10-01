@@ -51,17 +51,18 @@ def create_party_hat(radius=30.0, text="☺"):
     taper = 19.0  # Smaller value <=> sharper angle <=> more pointy hat
     text_pos_z = 15.0
     text_extrusion = 0.5
+    fillet_radius = 0.2
 
     solid_cone = (
         cq.Workplane("front")
         .circle(radius=radius)
-        .extrude(until=150.0, taper=taper).tag("cone")
+        .extrude(until=150.0, taper=taper)
     )
 
     solid_cone_text_cutter = (
         cq.Workplane("front")
         .circle(radius=radius+text_extrusion)
-        .extrude(until=150.0, taper=taper).tag("cone")
+        .extrude(until=150.0, taper=taper)
     )
 
     text = (
@@ -69,36 +70,43 @@ def create_party_hat(radius=30.0, text="☺"):
             .transformed(offset=cq.Vector(0, 0, text_pos_z), rotate=cq.Vector(0, taper, -90))
             .text(
             text,
-            fontsize=18.0,  # mm
+            fontsize=22.0,  # mm
             distance=radius*5,  # Radius will be enough for a realistic hat with finite height.
             font="Sans",
             combine=False,
             halign="center",
             valign="center",
         )
-
-        # .circle(radius=10).cutThruAll()
-
     )
 
-    text_with_fillet = text.intersect(solid_cone_text_cutter).fillet(0.2).clean().tag("Text")
+    text_with_fillet = text.intersect(solid_cone_text_cutter).fillet(fillet_radius)
 
-    cone_with_extruded_text = text_with_fillet.union(solid_cone)
+    cone_with_extruded_text = text_with_fillet.union(solid_cone).clean()
 
-    cone_with_extruded_filleted_text = cone_with_extruded_text.faces(">Z and (not #Z)").fillet(0.2).clean()
+    cone_with_extruded_filleted_text = cone_with_extruded_text.faces(">Z").fillet(fillet_radius).clean()
 
-    #hat = cone_with_extruded_text.faces("<<Z[0]").shell(0.5)
+    hat = cone_with_extruded_filleted_text - cq.Workplane("front").circle(radius+1).extrude(fillet_radius)
 
-    return cone_with_extruded_filleted_text
+    return hat  # .faces("<Z").shell(0.3)
 
 
 def export_3mf(model, filenameWithExtension):
     cq.exporters.export(model, filenameWithExtension, tolerance=0.01, angularTolerance=0.05)
 
+    message = (
+                f"Slice in Cura with settings:"
+                "   -> Normal 0.2 mm settings as starting point\n"
+                "   -> Bottom thickness 0.0 mm, \n"
+                "   -> Spiralize outer contour on,\n"
+                "   -> Slicing tolerance Exclusive on\n"
+    )
+    print(message)
+
 
 def main():
-    hat = create_party_hat(radius=40.0, text="Silje")
-    export_3mf(hat, "test.3mf")
+    text = "Silje"
+    hat = create_party_hat(radius=40.0, text=text)
+    export_3mf(hat, f"partyhat_{text.lower().replace(' ', '_')}.3mf")
 
 
 if __name__ == '__main__':
