@@ -1,0 +1,2 @@
+cadquery @ 
+git+https://github.com/CadQuery/cadquery.git@3d6d2abf16191bae729776c8523fe809e442e9f1
