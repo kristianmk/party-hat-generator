@@ -80,9 +80,16 @@ def create_party_hat(radius=30.0, text="☺"):
         # .circle(radius=10).cutThruAll()
 
     )
-    #result = text.faces("-Z").shell(0.5)
 
-    return text.intersect(solid_cone_text_cutter).union(solid_cone)
+    text_with_fillet = text.intersect(solid_cone_text_cutter).fillet(0.2).clean().tag("Text")
+
+    cone_with_extruded_text = text_with_fillet.union(solid_cone)
+
+    cone_with_extruded_filleted_text = cone_with_extruded_text.faces(">Z and (not #Z)").fillet(0.2).clean()
+
+    #hat = cone_with_extruded_text.faces("<<Z[0]").shell(0.5)
+
+    return cone_with_extruded_filleted_text
 
 
 def export_3mf(model, filenameWithExtension):
