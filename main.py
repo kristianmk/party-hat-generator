@@ -97,8 +97,9 @@ def export_3mf(model, filenameWithExtension):
                 f"Slice in Cura with settings:\n"
                 "   -> Normal 0.2 mm settings as starting point\n"
                 "   -> Bottom thickness 0.0 mm, \n"
+                "   -> Infill 0%,\n"  
                 "   -> Spiralize outer contour on,\n"
-                "   -> Slicing tolerance Exclusive on.\n"
+                "   -> (Slicing tolerance Exclusive on).\n"
     )
     print(message)
 
