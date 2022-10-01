@@ -94,11 +94,11 @@ def export_3mf(model, filenameWithExtension):
     cq.exporters.export(model, filenameWithExtension, tolerance=0.01, angularTolerance=0.05)
 
     message = (
-                f"Slice in Cura with settings:"
+                f"Slice in Cura with settings:\n"
                 "   -> Normal 0.2 mm settings as starting point\n"
                 "   -> Bottom thickness 0.0 mm, \n"
                 "   -> Spiralize outer contour on,\n"
-                "   -> Slicing tolerance Exclusive on\n"
+                "   -> Slicing tolerance Exclusive on.\n"
     )
     print(message)
 
