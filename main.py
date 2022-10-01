@@ -48,24 +48,31 @@ def create_princess_tiara(radius=30.0, text="☺"):
 
 def create_party_hat(radius=30.0, text="☺"):
 
+    taper = 19.0  # Smaller value <=> sharper angle <=> more pointy hat
+    text_pos_z = 15.0
+    text_extrusion = 0.5
+
     solid_cone = (
         cq.Workplane("front")
         .circle(radius=radius)
-        .extrude(until=150.0, taper=19.0).tag("cone")
+        .extrude(until=150.0, taper=taper).tag("cone")
     )
 
-    text_pos_z = 30
+    solid_cone_text_cutter = (
+        cq.Workplane("front")
+        .circle(radius=radius+text_extrusion)
+        .extrude(until=150.0, taper=taper).tag("cone")
+    )
 
     text = (
-        solid_cone.copyWorkplane(
-              cq.Workplane("left", origin=(100, 0, text_pos_z))
-                  .transformed(offset=cq.Vector(0, 0, text_pos_z), rotate=cq.Vector(0, 0, -90))
-           ).text(
+        cq.Workplane("left", origin=(radius, 0, text_pos_z))
+            .transformed(offset=cq.Vector(0, 0, text_pos_z), rotate=cq.Vector(0, taper, -90))
+            .text(
             text,
             fontsize=18.0,  # mm
-            distance=200.0,
+            distance=radius*5,  # Radius will be enough for a realistic hat with finite height.
             font="Sans",
-            combine="cut",
+            combine=False,
             halign="center",
             valign="center",
         )
@@ -75,7 +82,7 @@ def create_party_hat(radius=30.0, text="☺"):
     )
     #result = text.faces("-Z").shell(0.5)
 
-    return text
+    return text.intersect(solid_cone_text_cutter).union(solid_cone)
 
 
 def export_3mf(model, filenameWithExtension):
