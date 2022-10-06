@@ -14,3 +14,6 @@ Tested with Python 3.9.
 
 
 The last step will install a specific cadquery version, as this project is dependent on 3mf export format support. You could need to upgrade your slicer to use the produced files.
+
+## Making a hat
+Edit list of names, icons and/or font size in main.py. Run main.py, and hopefully get a 3mf file ready for slicing using Cura or another 3D printer software.
