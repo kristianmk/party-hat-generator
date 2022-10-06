@@ -1,8 +1,9 @@
 # party-hat-generator
-Party hat generator for 3D-printing
+Party hat generator for 3D-printing. Not suitable for children due to possible sharp edges.
 
-Print using vase - or spiral mode for best results. See printed hints when exporting.
+Print using vase - or spiral mode for best results. See slicing hints when exporting.
 
+Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong, so all words will not work. Font size below 20 will increase failure rate.
 
 ## Installation
 Tested with Python 3.9.
