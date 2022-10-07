@@ -9,7 +9,7 @@ Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong
 Tested with Python 3.9.
 1. Clone this repository.
 2. Create a virtual environment.
-3. Install python dependencies using `pip -r requirements.txt`
+3. Install python dependencies using `pip install -r requirements.txt`
 4. For using emojis, download the Google Noto Emoji font here: https://fonts.google.com/noto/specimen/Noto+Emoji and put the font in a new folder called Noto_Emoji next to main.py. Like this: "Noto_Emoji/NotoEmoji-VariableFont_wght.ttf".
 
 
