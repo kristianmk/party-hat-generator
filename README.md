@@ -14,7 +14,7 @@ Tested with Python 3.9.
 4. For using emojis, download the Google Noto Emoji font here: https://fonts.google.com/noto/specimen/Noto+Emoji and put the font in a new folder called Noto_Emoji next to main.py. Like this: "Noto_Emoji/NotoEmoji-VariableFont_wght.ttf".
 
 
-The last step will install a specific cadquery version, as this project is dependent on 3mf export format support. You could need to upgrade your slicer to use the produced files.
+Step 3 will install a specific cadquery version, as this project is dependent on 3mf export format support. You could need to upgrade your slicer to use the produced files.
 
 ## Making a hat
 Edit list of names, icons and/or font size in main.py. Run main.py, and hopefully get a 3mf file ready for slicing using Cura or another 3D printer software.
