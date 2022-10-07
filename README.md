@@ -1,4 +1,5 @@
 # party-hat-generator
+<img src="partyhats.jpg" width="42%" alt="Partyhats" align="right">
 Party hat generator for 3D-printing. Not suitable for children due to possible sharp edges and possible printing problems like delamination.
 
 Print using vase - or spiral mode for best results. See slicing hints when exporting.
