@@ -20,3 +20,7 @@ Step 3 will install a specific cadquery version, as this project is dependent on
 Edit list of names, icons and/or font size in main.py. Run main.py, and hopefully get a 3mf file ready for slicing using Cura or another 3D printer software.
 
 Material consumption: Around 12 grams of PLA filament for one hat (95 mm diameter).
+
+## Some nice filaments for hats
+Amazon: https://amzn.to/3CEhMlU (this is an advertisement / referral link!)
+Elefun: https://www.elefun.no/p/prod.aspx?v=55582 (not an advertisement, this is the filament type used for the printed hats (picture).)
