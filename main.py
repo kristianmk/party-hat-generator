@@ -7,6 +7,7 @@ import math
 # Get from Google: https://fonts.google.com/noto/specimen/Noto+Emoji
 emoji_font_path = "Noto_Emoji/NotoEmoji-VariableFont_wght.ttf"
 
+
 def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_tiedown=True):
     taper = 19.0  # Smaller value <=> sharper angle <=> more pointy hat
     text_pos_z = 13.0
@@ -79,7 +80,7 @@ def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_t
             .combine()
     )
 
-    cutted_text = text.intersect(solid_cone_text_cutter)  # .fillet(fillet_radius)
+    cutted_text = text.intersect(solid_cone_text_cutter)
     cone_with_extruded_filleted_text = cutted_text.union(solid_cone).edges().fillet(fillet_radius)
 
     # Removes the lower part to get rid of unnecessary fillet.
@@ -120,9 +121,9 @@ def main():
     # Generate multiple hats using a tuple.
     names = [  # ("☺", 48, False),  # This character is available in the Arial font.
                ("🌟", 43, True),    # Emoji
-               #("♥", 38, True),    # Emoji
-               #("©", 42, True),    # Emoji
-               #("Name", 26, False),
+               # ("♥", 38, True),    # Emoji
+               # ("©", 42, True),    # Emoji
+               ("Maker", 22, False),
                # ("K", 48, False),
                # ("20!", 24, False),
                # ("Test", 25, False),
