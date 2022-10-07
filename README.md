@@ -22,5 +22,5 @@ Edit list of names, icons and/or font size in main.py. Run main.py, and hopefull
 Material consumption: Around 12 grams of PLA filament for one hat (95 mm diameter).
 
 ## Some nice filaments for hats
-Amazon: https://amzn.to/3CEhMlU (this is an advertisement / referral link!)
+Amazon: https://amzn.to/3CEhMlU (this is an advertisement / referral link!)<br/>
 Elefun: https://www.elefun.no/p/prod.aspx?v=55582 (not an advertisement, this is the filament type used for the printed hats (picture).)
