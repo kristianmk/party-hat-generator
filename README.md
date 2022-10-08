@@ -1,4 +1,4 @@
-# party-hat-generator
+# party-hat-generator 🥳
 <img src="partyhats.jpg" width="42%" alt="Partyhats" align="right">
 Party hat generator for 3D-printing. Not suitable for children due to possible sharp edges and possible printing problems like delamination.
 <br/><br/>
