@@ -8,12 +8,14 @@ import math
 emoji_font_path = "Noto_Emoji/NotoEmoji-VariableFont_wght.ttf"
 
 
-def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_tiedown=True):
-    taper = 19.0  # Smaller value <=> sharper angle <=> more pointy hat
-    text_pos_z = 13.0
+def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_tiedown=True, halloween_mode=False):
+    taper = 19.0 if not halloween_mode else 17.0  # Smaller value <=> sharper angle <=> more pointy hat
+    text_pos_z = 13.0 if not halloween_mode else fontsize/2
     text_extrusion = 0.5
     fillet_radius = 0.12  # 0.12 works for most text, but filleting with cadquery is not robust. 0.2 looks better.
     tiedown_thickness = 2
+    brim_width = radius/2.0
+
     layer_height = 0.2  # 3D printer setting.
 
     height = radius / math.tan(taper * math.pi / 180)
@@ -24,7 +26,7 @@ def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_t
             .circle(radius=radius)
             .extrude(until=height_plus_some_margin, taper=taper)  # Create cone by extrusion
             .cut(cq.Workplane("front", origin=(0, 0, height)).circle(50).extrude(-2.1))  # Remove sharp tip
-            .faces(">Z").fillet(1.0)  # Round off resulting circular face on tip.
+            .faces(">Z").fillet(0.7)  # Round off resulting circular face on tip.
     )
 
     solid_cone_text_cutter = (  # This cone is used for cutting text, not for the hat itself.
@@ -72,7 +74,7 @@ def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_t
             .combine()
     )
 
-    tiedown_hidden_inside = (  # Used for
+    tiedown_hidden_inside = (  # Reinforced ring inside hat to make tiedown ears less vulnerable to cracking.
         cq.Workplane("front", origin=(0, 0, 0))
             .add(tiedown_circle_hidden_inside_hat)
             .union(tiedown_ears_inside_hat)
@@ -92,6 +94,19 @@ def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_t
         .circle(radius-1).extrude(tiedown_thickness + layer_height, combine="cut", taper=taper).combine()
     )
 
+
+    hat_brim = (
+        cq.Workplane("front", origin=(0, 0, 0))
+        .circle(radius=radius+brim_width)
+        .extrude(until=tiedown_thickness/2)
+        .faces(">Z")
+        .circle(radius)
+        .cutThruAll()
+        .combine()
+    )
+
+    if halloween_mode:
+        hat = hat.union(hat_brim)
 
     # tiedown_inside.union(hat)  #.faces("<Z").shell(0.01)#Shelling and fillets did not work well together.
     return hat.union(tiedown_hidden_inside) if with_tiedown else hat
@@ -116,14 +131,15 @@ def export_3mf(model, filename_with_extension):
 
 def main():
     # Select hat size, 95.0 cm diameter looks like a "normal" party hat.
-    diameter = 95.0  # 102.0
+    diameter = 170.0  # 102.0
 
     # Generate multiple hats using a tuple.
     names = [  # ("☺", 48, False),  # This character is available in the Arial font.
-               ("🌟", 43, True),    # Emoji
+               # ("🌟", 43, True),    # Emoji
                # ("♥", 38, True),    # Emoji
                # ("©", 42, True),    # Emoji
-               ("Maker", 22, False),
+               ("🎃", 85, True),
+               # ("J&T", 28, False),
                # ("K", 48, False),
                # ("20!", 24, False),
                # ("Test", 25, False),
@@ -133,7 +149,13 @@ def main():
     for name in names:
         print(f"Working on hat {name[0]}, text size={name[1]}")
         text = name[0]
-        hat = create_party_hat(radius=0.5 * diameter, text=text, fontsize=name[1], emoji=name[2])
+
+        # Halloween-hat
+        hat = create_party_hat(radius=0.5 * diameter, text=text, fontsize=name[1], emoji=name[2], halloween_mode=True)
+
+        # Normal party hat
+        #hat = create_party_hat(radius=0.5 * diameter, text=text, fontsize=name[1], emoji=name[2])
+
         export_3mf(hat, f"partyhat_{text.lower().replace(' ', '_')}_diameter_{round(diameter)}_fontsize_{name[1]}.3mf")
 
 
