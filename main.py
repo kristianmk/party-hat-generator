@@ -133,7 +133,7 @@ def main():
     # Select hat size, 95.0 cm diameter looks like a "normal" party hat.
     diameter = 170.0  # 102.0
 
-    # Generate multiple hats using a tuple.
+    # Generate multiple hats using a list of tuples.
     names = [  # ("☺", 48, False),  # This character is available in the Arial font.
                # ("🌟", 43, True),    # Emoji
                # ("♥", 38, True),    # Emoji
