@@ -8,7 +8,7 @@ Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong
 
 ## Installation
 ### Recommended way (conda)
-
+Tested with Python 3.11.
 1. Clone this repository.
 2. Install miniforge (macos: `brew install miniforge`)
 3. Create virtual environment for qadquery 2 and install a specific version (tested with party hat generator):
@@ -32,7 +32,7 @@ Tested with Python 3.9.
 Step 3 will install a specific cadquery version, as this project is dependent on 3mf export format support. You could need to upgrade your slicer to use the produced files.
 
 ## Making a hat
-Edit list of names, icons and/or font size in main.py. Run main.py, and hopefully get a 3mf file ready for slicing using Cura or another 3D printer software.
+Edit list of names, icons and/or font size in main.py. Run main.py from the conda (or pip) virtual environment, and hopefully get a 3mf file ready for slicing using Cura or another 3D printer software.
 
 Material consumption: Around 12 grams of PLA filament for one hat (95 mm diameter).
 
