@@ -11,7 +11,7 @@ Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong
 Tested with Python 3.11.
 1. Clone this repository.
 2. Install miniforge (macos: `brew install miniforge`)
-3. Create virtual environment for qadquery 2 and install a specific version (tested with party hat generator):
+3. Create a virtual environment for qadquery 2 and install a specific version (tested with party hat generator):
 ```
 conda create -n cq22
 conda activate cq22
