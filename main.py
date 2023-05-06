@@ -115,6 +115,8 @@ def create_party_hat(radius=30.0, text="☺", emoji=False, fontsize=28.0, with_t
 def export_3mf(model, filename_with_extension):
     cq.exporters.export(model, filename_with_extension, tolerance=0.01, angularTolerance=0.05)
 
+    print(f"Hat saved as {filename_with_extension}.")
+
     message = (
         f"Slice in Cura with settings:\n"
         "   -> Normal 0.2 mm settings as starting point,\n"

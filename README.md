@@ -7,6 +7,21 @@ Print using vase - or spiral mode for best results. See slicing hints when expor
 Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong, so all words will not work. Font size below 20 will increase failure rate.
 
 ## Installation
+### Recommended way (conda)
+
+1. Clone this repository.
+2. Install miniforge (macos: `brew install miniforge`)
+3. Create virtual environment for qadquery 2 and install a specific version (tested with party hat generator):
+```
+conda create -n cq22
+conda activate cq22
+conda install -c conda-forge cadquery=2.2.0 occt=7.7.0
+```
+4. For using emojis, download the Google Noto Emoji font here: https://fonts.google.com/noto/specimen/Noto+Emoji and put the font in a new folder called Noto_Emoji next to main.py. Like this: "Noto_Emoji/NotoEmoji-VariableFont_wght.ttf".
+
+
+### Deprecated (pip)
+Using pip, not recommended as cadquery 2 series plays better with conda.
 Tested with Python 3.9.
 1. Clone this repository.
 2. Create a virtual environment.
