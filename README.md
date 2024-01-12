@@ -4,7 +4,7 @@ Party hat generator for 3D-printing. Not suitable for children due to possible s
 <br/><br/>
 Print using vase -- or spiral mode -- for best results. See slicing hints when exporting.
 <br/><br/>
-Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong, so all words will not work. Font size below 20 will increase failure rate.
+Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong, so all words will not work. Font size below 20 will increase failure rate. A possible quick-fix is to increase the model size 100% or more, and scale back before export or in the slicer. This is not implemented.
 
 ## Installation
 ### Recommended way (conda)
