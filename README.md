@@ -6,6 +6,9 @@ Print using vase -- or spiral mode -- for best results. See slicing hints when e
 <br/><br/>
 Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong, so all words will not work. Font size below 20 will increase failure rate. A possible quick-fix is to increase the model size 100% or more, and scale back before export or in the slicer. This is not implemented.
 
+## License, see formal LICENSE file and this Suno AI song:
+https://github.com/kristianmk/party-hat-generator/assets/1713062/72897062-d188-467a-9c4d-a07b666da05b
+
 ## Installation
 ### Recommended way (conda)
 Tested with Python 3.11.
