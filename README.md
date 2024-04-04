@@ -9,6 +9,8 @@ Note: Text cutting and union + filleting is a little bit buggy, maybe used wrong
 ## License, see formal LICENSE file and this Suno AI song:
 https://github.com/kristianmk/party-hat-generator/assets/1713062/72897062-d188-467a-9c4d-a07b666da05b
 
+(Original idea from https://x.com/goodside/status/1775713487529922702?s=20)
+
 ## Installation
 ### Recommended way (conda)
 Tested with Python 3.11.
